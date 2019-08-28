@@ -23,14 +23,14 @@ def cartdelete(request, item_id):
         totalProtein=0
         for item in cart:
             totalCalories += item.calories
-            totalProtein+=int(item.protein)
+            totalProtein+=item.protein
         return render(request, 'michFit/cart.html',{'cart': cart, 'totalCalories': totalCalories, 'totalProtein': totalProtein} )
     except:
         totalCalories = 0
         totalProtein=0
         for item in cart:
             totalCalories += item.calories
-            totalProtein+=int(item.protein)
+            totalProtein+=item.protein
         return render(request, 'michFit/cart.html',{'cart': cart, 'totalCalories': totalCalories, 'totalProtein': totalProtein} )
     
 
@@ -49,6 +49,5 @@ def cart_view(request,item_id):
     totalProtein=0
     for item in cart:
         totalCalories += item.calories
-       
-        totalProtein+=int(item.protein)
+        totalProtein+=item.protein
     return render(request, 'michFit/cart.html',{'cart': cart, 'totalCalories': totalCalories, 'totalProtein': totalProtein} )
