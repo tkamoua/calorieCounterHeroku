@@ -1,0 +1,44 @@
+
+  {% load static %}
+  <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'michFit/style.css' %}">
+</head>
+
+<body>
+
+<h1 class="text-center"><a class="cart white" href = "{% url 'michFit:home'  %}">Home</a></h1>
+<h1 class="white text-center">Cart</h1>
+
+
+    {% if cart %}
+    <ul class="ulcart">
+
+    {% for item in cart %}
+        <li class="black"><strong>{{ item.name }}</strong>   Calories: {{ item.calories}} Protein: {{item.protein}} <a href="{% url 'michFit:cartdelete' item.id %}"><button>Delete Item</button></a> </li>
+    {% endfor %}
+   <h2 class="black">Calories: {{totalCalories}} </h2>
+   <h2 class="black">Protein: {{totalProtein}}</h2>
+    </ul>
+{% else %}
+    <p class="black text-center">Empty Cart</p>
+{% endif %}
+    
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</body>
+
+</html>
